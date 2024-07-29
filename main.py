@@ -1,14 +1,7 @@
-# -*- coding: utf-8 -*-
-from fastapi import FastAPI, Path    # Установили фреймворк FastAPI при помощи пакетного менеджера pip.
-from typing import Annotated
+from fastapi import FastAPI    # Установили фреймворк FastAPI при помощи пакетного менеджера pip.
 
 
-app = FastAPI()    # Создали приложение(объект) FastAPI предварительно импортировав класс для него.
-
-
-@app.get("/")  # если мы получили .get("/")-гет запрос
-async def welcome() -> dict:  # то отработай эту функцию
-    return {"message": "Hello world!"}
+app = FastAPI()    # Создаkb приложение(объект) FastAPI предварительно импортировав класс для него.
 
 
 @app.get("/")    # Создайли маршрут к главной странице - "/".
@@ -33,20 +26,7 @@ async def Get_User_Info(username: str, age: int) -> dict:
     # По нему должно выводиться сообщение "Информация о пользователе. Имя: <username>, Возраст: <age>".
 
 
-@app.get("/user/{user-id}")  # если мы получили .get("/")-гет запрос
-async def Get_Main_Page(user_id: Annotated[int, Path(ge=1, le=100, description="Enter User ID", example="1")]) -> dict:
-    # Path - провер.какой тип данных приходит и хранит их, Annotated - помогает работать с большестроками
-    return {"message": f"Hello, {user_id}"}
 
-
-@app.get("/user/{username}/{age}")  # если мы получили .get("/")-гет запрос
-async def Get_Main_Page(username: Annotated[str, Path(min_length=5, max_length=20, description="Enter username",
-                        example="UrbanUser")], age: int = Path(ge=18, le=120,
-                        description="Enter age", example="24")) -> dict:
-    # Path - проверяет какой тип данных приходит и хранит их, Annotated - помогает работать с большестроками
-    return {"message": f"Hello, {username} {age}"}
-
-####################################################
 # @app.get("/id")
 # async def id_paginator(username: str = 'Alex', age: int = 34) -> dict:  # передаём по умолчанию
 #     return {"User": username, "Age": age}
