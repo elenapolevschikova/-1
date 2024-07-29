@@ -46,7 +46,7 @@ async def Get_Main_Page(username: Annotated[str, Path(min_length=5, max_length=2
     # Path - проверяет какой тип данных приходит и хранит их, Annotated - помогает работать с большестроками
     return {"message": f"Hello, {username} {age}"}
 
-##################
+####################################################
 # @app.get("/id")
 # async def id_paginator(username: str = 'Alex', age: int = 34) -> dict:  # передаём по умолчанию
 #     return {"User": username, "Age": age}
